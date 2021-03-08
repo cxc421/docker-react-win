@@ -1,0 +1,17 @@
+# Specify lanauge we use is generic
+language: generic
+
+# Supper user permission to run doecker
+sudo: required
+
+# Tell Travis CI we need to use docker
+services:
+  - docker
+
+# Setup commands before execute test command
+before_install:
+  - docker build -t chrischuang0421/docker-react-win -f Dockerfile.dev .
+
+# Setup test commnads
+script:
+  - docker run -e CI=true chrischuang0421/docker-react-win npm run test
