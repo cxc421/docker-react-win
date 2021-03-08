@@ -13,5 +13,6 @@ before_install:
   - docker build -t chrischuang0421/docker-react-win -f Dockerfile.dev .
 
 # Setup test commnads
+# Add CI flag to run test only one
 script:
   - docker run -e CI=true chrischuang0421/docker-react-win npm run test
