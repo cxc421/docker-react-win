@@ -16,3 +16,15 @@ before_install:
 # Add CI flag to run test only one
 script:
   - docker run -e CI=true chrischuang0421/docker-react-win npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react-win"
+  env: "Dockerreactwin-env"
+  bucket_name: "elasticbeanstalk-us-east-2-796215826286"
+  bucket_path: "docker-react-win"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
